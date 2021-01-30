@@ -40,32 +40,12 @@
             <label for="edad">Agregar materia</label>
           </b-col>
           <b-col class="text-left">
-            <div class="dropdown" @click="cambiar()">
-              <button
-                class="btn btn-primary dropdown-toggle"
-                type="button"
-                id="dropdownMenu2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li>
-                  <button id="uno" class="dropdown-item" type="button">Action</button>
-                </li>
-                <li>
-                  <button id="dos" class="dropdown-item" type="button">
-                    Another action
-                  </button>
-                </li>
-                <li>
-                  <button id="tres" class="dropdown-item" type="button">
-                    Something else here
-                  </button>
-                </li>
-              </ul>
-            </div>
+            <b-form-select
+              v-model="selected"
+              :options="options"
+              size="sm"
+              class="mt-3"
+            ></b-form-select>
           </b-col>
           <b-col align-self="start" class="text-left">
             <b-button variant="outline-primary" @click="agregarDato()"
@@ -99,11 +79,11 @@
               text="Materias"
               variant="outline-primary"
               class="dropdown m-2"
+              v-model="dato.materia"
             >
-              <b-dropdown-item href="#"></b-dropdown-item>
+            <b-dropdown-item> {{ dato.materia }}</b-dropdown-item>
             </b-dropdown>
           </b-td>
-          <!-- <b-td><span v-if="dato.edad >= 18">Mayor de edad</span></b-td> -->
         </b-tr>
       </b-tbody>
     </b-table-simple>
@@ -121,9 +101,17 @@ export default {
   data() {
     return {
       arreglo: [
-        { nombre: "Nahum", edad: 20, sexo: "m", materia: "" },
-        { nombre: "Jose", edad: 5, sexo: "m", materia: "" },
-        { nombre: "Maritza", edad: 15, sexo: "f", materia: "" },
+        { nombre: "Nahum", edad: 20, sexo: "m", materia: "Programacion" },
+        { nombre: "Jose", edad: 5, sexo: "m", materia: "Programacion" },
+        { nombre: "Maritza", edad: 15, sexo: "f", materia: "Programacion" },
+      ],
+      selected: null,
+      options: [
+        { value: null, text: "Seleccione una materia" },
+        { value: "Programacion", text: "Programacion" },
+        { value: "Ingles", text: "Ingles" },
+        { value: "Ingeniera de Software", text: "Ingeniera de Software" },
+        { value: "Ingeniera de Software", text: "Bases de Datos" },
       ],
       nuevoNombre: "",
       nuevaEdad: "",
@@ -137,21 +125,8 @@ export default {
         nombre: this.nuevoNombre,
         edad: this.nuevaEdad,
         sexo: this.nuevoSexo,
-        materia: this.nuevaMateria,
+        materia: this.selected,
       });
-    },
-    cambiar() {
-      const drop = document.getElementById('dropdownMenu2');
-      drop.addEventListener('change', () => {
-
-      })
-      const btn = document.querySelector('#uno');
-      drop.innerHTML = btn.innerHTML;
-
-      
-
-
-
     },
   },
 };
