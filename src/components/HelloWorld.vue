@@ -40,16 +40,32 @@
             <label for="edad">Agregar materia</label>
           </b-col>
           <b-col class="text-left">
-            <b-dropdown
-              id="dropdown-left"
-              variant="outline-primary"
-              class="dropdown m-2"
-            >
-              <b-dropdown-item>Programacion</b-dropdown-item>
-              <b-dropdown-item>Base de Datos</b-dropdown-item>
-              <b-dropdown-item>Ingles</b-dropdown-item>
-              <b-dropdown-item>Software</b-dropdown-item>
-            </b-dropdown>
+            <div class="dropdown" @click="cambiar()">
+              <button
+                class="btn btn-primary dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li>
+                  <button id="uno" class="dropdown-item" type="button">Action</button>
+                </li>
+                <li>
+                  <button id="dos" class="dropdown-item" type="button">
+                    Another action
+                  </button>
+                </li>
+                <li>
+                  <button id="tres" class="dropdown-item" type="button">
+                    Something else here
+                  </button>
+                </li>
+              </ul>
+            </div>
           </b-col>
           <b-col align-self="start" class="text-left">
             <b-button variant="outline-primary" @click="agregarDato()"
@@ -68,7 +84,7 @@
         <b-th>Nombre</b-th>
         <b-th>Edad</b-th>
         <b-th>Sexo</b-th>
-        <b-th></b-th>
+        <b-th>Materias</b-th>
       </b-thead>
       <b-tbody>
         <b-tr v-for="dato in arreglo" :key="dato.nombre">
@@ -84,9 +100,7 @@
               variant="outline-primary"
               class="dropdown m-2"
             >
-              <b-dropdown-item href="#">{{
-                dato.materia
-              }}</b-dropdown-item>
+              <b-dropdown-item href="#"></b-dropdown-item>
             </b-dropdown>
           </b-td>
           <!-- <b-td><span v-if="dato.edad >= 18">Mayor de edad</span></b-td> -->
@@ -125,9 +139,20 @@ export default {
         sexo: this.nuevoSexo,
         materia: this.nuevaMateria,
       });
-    }, 
+    },
+    cambiar() {
+      const drop = document.getElementById('dropdownMenu2');
+      drop.addEventListener('change', () => {
+
+      })
+      const btn = document.querySelector('#uno');
+      drop.innerHTML = btn.innerHTML;
+
+      
+
+
+
+    },
   },
-  computed: {
-  }
 };
 </script>
