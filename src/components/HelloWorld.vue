@@ -101,15 +101,14 @@ export default {
   data() {
     return {
       arreglo: [
-        { nombre: "Nahum", edad: 20, sexo: "m", materia: "Programacion" },
-        { nombre: "Jose", edad: 5, sexo: "m", materia: "Programacion" },
-        { nombre: "Maritza", edad: 15, sexo: "f", materia: "Programacion" },
+        { nombre: "Gabriela", edad: 19, sexo: "f", materia: "Programación" },
+        { nombre: "Roberto", edad: 19, sexo: "m", materia: "Programación" },
       ],
       selected: null,
       options: [
         { value: null, text: "Seleccione una materia" },
-        { value: "Programacion", text: "Programacion" },
-        { value: "Ingles", text: "Ingles" },
+        { value: "Programación", text: "Programación" },
+        { value: "Ingles Técnico", text: "Ingles Técnico" },
         { value: "Ingeniera de Software", text: "Ingeniera de Software" },
         { value: "Ingeniera de Software", text: "Bases de Datos" },
       ],
